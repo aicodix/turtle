@@ -14,23 +14,12 @@ import (
 	"image"
 	"image/png"
 	"image/color"
+	"strings"
 )
 
 func die(err interface{}) {
 	fmt.Println(err)
 	os.Exit(1)
-}
-
-func substitute(input string, rules map[rune]string) string {
-	output := ""
-	for _, r := range input {
-		if rules[r] != "" {
-			output += rules[r]
-		} else {
-			output += string(r)
-		}
-	}
-	return output
 }
 
 func rot90(p image.Point) image.Point {
@@ -90,28 +79,30 @@ func line(img *image.NRGBA, a, b image.Point) {
 func main() {
 	scale := 10
 	margin := 10
-	rules := make(map[rune]string)
 /*
 	// Dragon curve
-	rules['X'] = "X+YF+"
-	rules['Y'] = "-FX-Y"
+	rules := strings.NewReplacer(
+		"X", "X+YF+",
+		"Y", "-FX-Y")
 	axiom := "FX"
 	level := 12
 
 	// Koch curve
-	rules['F'] = "F+F-F-F+F"
+	rules := strings.NewReplacer(
+		"F", "F+F-F-F+F")
 	axiom := "F"
 	level := 4
 */
 	// Hilbert curve
-	rules['A'] = "-BF+AFA+FB-"
-	rules['B'] = "+AF-BFB-FA+"
+	rules := strings.NewReplacer(
+		"A", "-BF+AFA+FB-",
+		"B", "+AF-BFB-FA+")
 	axiom := "A"
 	level := 5
 
 	tmp := axiom
 	for i := 0; i < level; i++ {
-		tmp = substitute(tmp, rules)
+		tmp = rules.Replace(tmp)
 	}
 	// fmt.Println(tmp)
 	path := draw(tmp)

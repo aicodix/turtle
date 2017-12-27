@@ -4,8 +4,9 @@ Hacked this quickly to make a nice background image of the Hilbert curve using t
 
 ```
 // Hilbert curve
-rules['A'] = "-BF+AFA+FB-"
-rules['B'] = "+AF-BFB-FA+"
+rules := strings.NewReplacer(
+	"A", "-BF+AFA+FB-",
+	"B", "+AF-BFB-FA+")
 axiom := "A"
 level := 6
 ```
@@ -17,7 +18,8 @@ Here some more examples:
 
 ```
 // Koch curve
-rules['F'] = "F+F-F-F+F"
+rules := strings.NewReplacer(
+	"F", "F+F-F-F+F")
 axiom := "F"
 level := 4
 ```
@@ -25,8 +27,9 @@ level := 4
 
 ```
 // Dragon curve
-rules['X'] = "X+YF+"
-rules['Y'] = "-FX-Y"
+rules := strings.NewReplacer(
+	"X", "X+YF+",
+	"Y", "-FX-Y")
 axiom := "FX"
 level := 12
 ```
