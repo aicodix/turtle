@@ -12,7 +12,7 @@ level := 6
 ```
 The code above produces a nice image like this:
 
-![hilbert.png](https://raw.githubusercontent.com/aicodix/turtle/master/hilbert.png)
+![hilbert.png](hilbert.png)
 
 Here some more examples:
 
@@ -23,7 +23,7 @@ rules := strings.NewReplacer(
 axiom := "F"
 level := 4
 ```
-![koch.png](https://raw.githubusercontent.com/aicodix/turtle/master/koch.png)
+![koch.png](koch.png)
 
 ```
 // Dragon curve
@@ -33,4 +33,4 @@ rules := strings.NewReplacer(
 axiom := "FX"
 level := 12
 ```
-![dragon.png](https://raw.githubusercontent.com/aicodix/turtle/master/dragon.png)
+![dragon.png](dragon.png)
